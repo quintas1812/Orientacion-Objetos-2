@@ -1,4 +1,4 @@
-package main;
+package ejercicio1.main;
 public class Participante {
     private int dni;
     private String nombre;

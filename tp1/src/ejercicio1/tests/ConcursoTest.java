@@ -1,6 +1,6 @@
-package tests;
-import main.Concurso;
-import main.Participante;
+package ejercicio1.tests;
+import ejercicio1.main.Concurso;
+import ejercicio1.main.Participante;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;

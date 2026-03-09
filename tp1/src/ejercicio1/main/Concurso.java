@@ -1,4 +1,4 @@
-package main;
+package ejercicio1.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
