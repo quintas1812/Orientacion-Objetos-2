@@ -12,28 +12,22 @@ public class Concurso {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
-
     public String agregarA(Participante participante) {
         LocalDate hoy = LocalDate.now();
         if (!hoy.isBefore(this.fechaInicio) && !hoy.isAfter(this.fechaFin)) {
             participantes.add(participante);
-            return "se puedo inscribir";
+            if (hoy.equals(this.fechaInicio)) {
+                int puntos = participante.cantPuntos() + 10;
+                participante.cambiarPuntos(puntos);
+            }
+            return "se puede inscribir";
         }
-        if (hoy.equals(this.fechaInicio)) {
-           int puntos= participante.cantPuntos() + 10;
-           participante.cambiarPuntos(puntos);
-            return "se puedo inscribir";
-        }
-        if (hoy.isAfter(this.fechaFin)){
-            return "no se puede inscribir fuera de fechas";
-        }
-        return null;
+        return "no se puede inscribir fuera de fechas";
     }
     public int puntosDe(Participante participante){
         return participante.cantPuntos();
     }
     public void eliminarA(Participante participante) {
-
         participantes.remove(participante);
     }
     public int cantidadadParticipantes(){
