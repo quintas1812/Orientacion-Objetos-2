@@ -1,17 +1,19 @@
 package ejercicio2.Main;
 
-public class Bebida {
-    private String nombre;
-    private double precio;
+public class Bebida extends ItemPedido {
 
     public Bebida(String nombre, double precio) {
-        this.nombre = nombre;
-        this.precio = precio;
+        super(nombre, precio);
     }
-    public String Nombre() {
-        return nombre;
-    }
-    public double Precio() {
-        return precio;
+
+    @Override
+    public double descuentoPara(TarjetaCredito tarjeta) {
+        if ("Visa".equals(tarjeta.Nombre()))  {
+            return this.precio * 0.97;
+        }
+        if ("Comarca Plus".equals(tarjeta.Nombre())) {
+            return this.precio * 0.98;
+        }
+        return  this.precio;
     }
 }
