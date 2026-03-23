@@ -1,5 +1,6 @@
-package ejercicio2.Main;
+package Main.ejercicio2;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PedidoAPagar {
@@ -8,12 +9,15 @@ public class PedidoAPagar {
     private TarjetaCredito tarjeta;
     private int porcentajeDePropina;
 
-    public PedidoAPagar(ArrayList<ItemPedido> consumiciones, TarjetaCredito tarjeta, int porcentajeDePropina) {
+    public PedidoAPagar(ArrayList<ItemPedido> consumiciones, TarjetaCredito tarjeta, int porcentajeDePropina, Save1 save) {
         this.consumiciones = consumiciones;
         this.tarjeta = tarjeta;
-        this.precioTotal = calcularPrecioTotal();
         this.porcentajeDePropina = porcentajeDePropina;
-    }
+        this.precioTotal = calcularPrecioTotal();
+        LocalDate date = LocalDate.now();
+        save.guardar(date + " $" + precioTotal);
+        }
+
     public float calcularPrecioTotal() {
         float costoTotal = 0;
         float descuentoTotal = 0;

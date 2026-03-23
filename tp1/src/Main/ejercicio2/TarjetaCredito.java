@@ -1,4 +1,4 @@
-package ejercicio2.Main;
+package Main.ejercicio2;
 
 public class TarjetaCredito {
     private String nombre;

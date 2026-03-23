@@ -1,4 +1,4 @@
-package ejercicio2.Main;
+package Main.ejercicio2;
 
 public abstract class ItemPedido {
     protected String nombre;

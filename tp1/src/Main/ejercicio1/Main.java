@@ -1,4 +1,4 @@
-package ejercicio1.main;
+package Main.ejercicio1;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,9 +8,8 @@ public class Main {
         Participante p1 = new Participante(12345678, "Juan", "Perez");
 
         System.out.println("Inscribiendo participante...");
-        String resultado = concurso.agregarA(p1);
-
-        System.out.println("Resultado: " + resultado);
+        Save save = new SaveFile("pruebaconcurso.txt");
+        concurso.agregarA(p1, save);
         System.out.println("Puntos del participante: " + concurso.puntosDe(p1));
         System.out.println("Cantidad de inscriptos: " + concurso.cantidadadParticipantes());
     }
