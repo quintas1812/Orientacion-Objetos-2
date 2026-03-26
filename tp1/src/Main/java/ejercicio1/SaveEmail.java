@@ -11,11 +11,6 @@ public class SaveEmail implements Save {
 
     @Override
     public void guardar(String datos) {
-        // Formateamos los datos para el cuerpo del mail
-        String asunto = "Nueva inscripción al concurso";
-        String cuerpo = "Se ha registrado un nuevo participante:" + datos;
-
-        // Enviamos el correo usando el emailSender que ya configuramos
-        emailSender.enviarEmail(this.destinatario, asunto, cuerpo);
+        emailSender.enviarEmail(destinatario, "Nueva Inscripción", datos);
     }
 }

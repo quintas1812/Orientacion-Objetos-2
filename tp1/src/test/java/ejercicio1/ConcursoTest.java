@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 class ConcursoTest {
     
@@ -23,57 +24,47 @@ class ConcursoTest {
         concurso.agregarA(participante2, save);
         assertEquals(10, concurso.puntosDe(participante));
     }
-// Preparar tu cuenta de Gmail (Paso Obligatorio)
-//Google ya no permite usar tu contraseña normal para aplicaciones externas. Debes generar una "Contraseña de Aplicación":
-//1.
-//Ve a tu Cuenta de Google.
-//2.
-//Activa la Verificación en dos pasos (si no la tienes ya).
-//3.
-//Busca en el buscador de la cuenta: "Contraseñas de aplicaciones".
-//4.
-//Crea una nueva (ponle de nombre "Java Test").
-//5.
-//Google te dará un código de 16 letras. Guárdalo, esa será tu contraseña en el código.
-//2. Modificar el Test en ConcursoTest.java
-//Ahora, cambia los datos del servidor para que apunten a Google en lugar de Mailtrap:
-//@Test
-//void enviarGmailReal() {
-//    // 1. Configuración para Gmail
-//    String host = "smtp.gmail.com";
-//    int port = 587; // Puerto para TLS
-//    String username = "tu_correo@gmail.com"; // Tu Gmail real
-//    String password = "abcd efgh ijkl mnop"; // ¡Las 16 letras que te dio Google!
-//
-//    EmailSender emailSender = new EmailSender(host, port, username, password);
-//    SaveEmail save = new SaveEmail(emailSender, "correo_del_que_recibe@gmail.com");
-//
-//    Participante participante = new Participante(12345678, "Prueba", "Real");
-//    LocalDate hoy = LocalDate.now();
-//    Concurso concurso = new Concurso(hoy, hoy.plusDays(5));
-//
-//    // Al agregar, se disparará el envío real
-//    concurso.agregarA(participante, save);
-//}
-    //. Ajuste técnico en EmailSender.java
-//Para que Gmail no rechace la conexión, asegúrate de que tu clase EmailSender tenga estas propiedades (tu código actual ya debería tenerlas, pero revísalo):
-//Java
-//prop.put("mail.smtp.auth", "true");
-//prop.put("mail.smtp.starttls.enable", "true"); // Vital para Gmail
-//¿Qué va a pasar?
-//•
-//Cuando ejecutes el test, Java se conectará al servidor de Google.
-//•
-//Google verificará tu "Contraseña de Aplicación".
-//•
-//El mail saldrá de tu bandeja de salida y llegará a la bandeja de entrada real del destinatario.
-//Advertencia de Seguridad: Nunca subas este archivo a GitHub con tu correo y contraseña de aplicación visibles. ¡Úsalo solo para esta prueba local!
-//¿Te animas a generar la contraseña en tu cuenta de Google para probarlo?
+
     @Test
-    void Gmail(){//verificar que se manda los gmail
+    void testInscripcionConEmailMockeado() {
+        // Creamos un mock de EmailSender en lugar de uno real
+        EmailSender emailSenderMock = mock(EmailSender.class);
+        SaveEmail save = new SaveEmail(emailSenderMock, "test@ejemplo.com");
+        
+        Participante participante = new Participante(12345678, "Juan", "Perez");
+        LocalDate hoy = LocalDate.now();
+        Concurso concurso = new Concurso(hoy, hoy.plusDays(5));
+
+        concurso.agregarA(participante, save);
+
+        // Verificamos la lógica de negocio (puntos)
+        assertEquals(10, concurso.puntosDe(participante));
+        
+        // Verificamos usando Mockito (si los imports están bien, esto funciona)
+        verify(emailSenderMock, times(1)).enviarEmail(anyString(), anyString(), anyString()); 
+    }
+
+    @Test
+    void GmailReal(){//verificar que se manda los gmail de verdad
+        String host = "smtp.gmail.com";
+        int port = 587;
+        String username = "augustoq3k@gmail.com";
+        String password = "gniijoxwjgdsrhcp"; // la contraseña te la da google en contraseñas de aplicacion de 16char, quitar espacios
+        EmailSender emailSender = new EmailSender(host, port, username, password);
+        SaveEmail save = new SaveEmail(emailSender, "morequintas@gmail.com");
+        Participante participante = new Participante(47780898, "Morena", "Quintas");
+        LocalDate hoy = LocalDate.now();
+        Concurso concurso = new Concurso(hoy, hoy.plusDays(5));
+        concurso.agregarA(participante, save);
+        assertEquals(10, concurso.puntosDe(participante));
+    }
+
+
+    @Test
+    void Gmail(){//verificar que se manda los gmail quedan en el mailtrap
         String host = "sandbox.smtp.mailtrap.io";
         int port = 2525;
-        String username = "c9604509b9b552";
+        String username = "c9604509b9b552"; // user y password de mailtrap en credenciales te aparece
         String password = "ceea89428edb2f";
         EmailSender emailSender = new EmailSender(host, port, username, password);
         SaveEmail save = new SaveEmail(emailSender, "augustoq3k@gmail.com");

@@ -38,7 +38,7 @@ public class EmailSender {
         try {
             // Crear el mensaje
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("augustoq3k@gmail.com"));
+            message.setFrom(new InternetAddress("ConcurosoLic_Sistemas@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
             message.setSubject(asunto);
             message.setText(cuerpo);
