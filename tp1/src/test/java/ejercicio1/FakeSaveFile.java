@@ -1,6 +1,4 @@
-package Tests.ejercicio1;
-
-import Main.ejercicio1.Save;
+package ejercicio1;
 
 public class FakeSaveFile implements Save {
     private String datos;

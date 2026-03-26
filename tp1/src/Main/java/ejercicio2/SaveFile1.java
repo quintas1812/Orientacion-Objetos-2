@@ -1,13 +1,15 @@
-package Main.ejercicio1;
+package ejercicio2;
+
+import ejercicio1.Save;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class SaveFile implements Save {
+public class SaveFile1 implements Save1 {
     private String path;
 
-    public SaveFile(String path) {
+    public SaveFile1(String path) {
         this.path = path;
     }
     @Override

@@ -1,6 +1,4 @@
-package Main.ejercicio2;
-
-import Main.ejercicio1.Save;
+package ejercicio2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

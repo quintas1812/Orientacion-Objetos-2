@@ -1,5 +1,4 @@
-package Tests.ejercicio2;
-import Main.ejercicio2.*;
+package ejercicio2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

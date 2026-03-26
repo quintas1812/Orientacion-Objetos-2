@@ -1,4 +1,4 @@
-package Main.ejercicio2;
+package ejercicio2;
 
 public class Bebida extends ItemPedido {
 

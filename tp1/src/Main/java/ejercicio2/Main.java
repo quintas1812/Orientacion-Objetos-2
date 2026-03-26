@@ -1,7 +1,4 @@
-package Main.ejercicio2;
-
-import Main.ejercicio1.Save;
-import Main.ejercicio1.SaveFile;
+package ejercicio2;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,10 +7,10 @@ public class Main {
         consumiciones.add(new Bebida("Agua", 100));
         consumiciones.add(new Plato("Pizza", 1000));
         consumiciones.add(new Plato("Pasta", 500));
-        Save1 save = new SaveFile1("pruebapedido.txt");
+        SaveFile1 save = new SaveFile1("pruebapedido.txt");
 
         TarjetaCredito tarjeta = new TarjetaCredito("Visa");
-        PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 2, save);
+        PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta,2 ,save);
 
         System.out.println("Calculando total para pedido con Visa...");
         System.out.println("Precio total con propina: " + pedido.calcularPrecioTotal());

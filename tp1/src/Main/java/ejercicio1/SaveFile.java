@@ -1,15 +1,13 @@
-package Main.ejercicio2;
-
-import Main.ejercicio1.Save;
+package ejercicio1;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class SaveFile1 implements Save1 {
+public class SaveFile implements Save {
     private String path;
 
-    public SaveFile1(String path) {
+    public SaveFile(String path) {
         this.path = path;
     }
     @Override
@@ -18,11 +16,12 @@ public class SaveFile1 implements Save1 {
         boolean isNewFile = !aFile.exists();
         try (FileWriter writer = new FileWriter(aFile, true)) { //fileWriter para escribir al final del archivo(append true)
             if (isNewFile) {
-                writer.write("Fecha, Precio\r\n");
+                writer.write("Fecha, Curso, Participante\r\n");
             }
             writer.write(datos);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 }
