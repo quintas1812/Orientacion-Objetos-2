@@ -15,10 +15,7 @@ public class Plato extends ItemPedido {
     public double Precio() {
         return precio;
     }
-    public double descuentoPara(TarjetaCredito tarjeta) {
-        if ("Mastercard".equals(tarjeta.Nombre()) || "Comarca Plus".equals(tarjeta.Nombre()))  {
-            return this.precio * 0.98;
-        }
-        return  this.precio;
+    public double descuentoCon(TarjetaCredito tarjeta) {
+        return tarjeta.aplicarDescuentoPlato(this.precio);
     }
 }

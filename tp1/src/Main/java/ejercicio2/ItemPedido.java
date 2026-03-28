@@ -18,5 +18,5 @@ public abstract class ItemPedido {
         return this.nombre;
     }
 
-    public abstract double descuentoPara(TarjetaCredito tarjeta);
+    public abstract double descuentoCon(TarjetaCredito tarjeta);
 }

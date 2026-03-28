@@ -14,7 +14,7 @@ class PedidoAPagarTest {
         ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
         consumiciones.add(new Bebida("Coca Cola", 100));
         consumiciones.add(new Plato("Pasta", 500));
-        TarjetaCredito tarjeta = new TarjetaCredito("Visa");
+        TarjetaCredito tarjeta = new Visa();
        PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 5, save);
         // Bebida: 100 * 0.97 = 97
         // Plato: 500
@@ -34,7 +34,7 @@ class PedidoAPagarTest {
          ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
          consumiciones.add(new Bebida("Coca Cola", 100));
          consumiciones.add(new Plato("Pasta", 500));
-         TarjetaCredito tarjeta = new TarjetaCredito("Visa");
+         TarjetaCredito tarjeta = new Visa();
          PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 5, save);
          assertEquals(627f, pedido.calcularPrecioTotal(), 0.01);
 
@@ -46,7 +46,7 @@ class PedidoAPagarTest {
         ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
         consumiciones.add(new Bebida("Coca Cola", 100));
         consumiciones.add(new Plato("Pasta", 500));
-        TarjetaCredito tarjeta = new TarjetaCredito("Visa");
+        TarjetaCredito tarjeta = new Visa();
         PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 5, save);
         LocalDate date = LocalDate.now();
        String expected= date + " $" + pedido.calcularPrecioTotal();
@@ -60,7 +60,7 @@ class PedidoAPagarTest {
         ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
         consumiciones.add(new Bebida("Agua", 100));
         consumiciones.add(new Plato("Pizza", 1000));
-        TarjetaCredito tarjeta = new TarjetaCredito("Mastercard");
+        TarjetaCredito tarjeta = new Mastercard();
        PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 3,save);
         // Bebida: 100
         // Plato: 1000 * 0.98 = 980
@@ -77,7 +77,7 @@ class PedidoAPagarTest {
         ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
         consumiciones.add(new Bebida("Cerveza", 200));
         consumiciones.add(new Plato("Ensalada", 500));
-        TarjetaCredito tarjeta = new TarjetaCredito("Comarca Plus");
+        TarjetaCredito tarjeta = new ComarcaPlus();
         PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 2,save);
         // Bebida: 200 * 0.98 = 196
         // Plato: 500 * 0.98 = 490
@@ -93,7 +93,7 @@ class PedidoAPagarTest {
         ArrayList<ItemPedido> consumiciones = new ArrayList<ItemPedido>();
         consumiciones.add(new Bebida("Cerveza", 200));
         consumiciones.add(new Plato("Ensalada", 500));
-        TarjetaCredito tarjeta = new TarjetaCredito("Viedma");
+        TarjetaCredito tarjeta = new Viedma();
         PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta, 2,save);
         // Bebida: 200
         // Plato: 500

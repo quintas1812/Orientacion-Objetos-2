@@ -1,5 +1,6 @@
 package ejercicio1;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Path;
@@ -10,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class ConcursoTest {
-    
+    @DisplayName("verifica si se le otorgan los 10 puntos, si se inscribe el primer dia")
     @Test
     void test1(@TempDir Path tempDir) {
         // este test verifica la logica ademas de si se guardan los datos, en este caso en un archivo temporal.

@@ -9,7 +9,7 @@ public class Main {
         consumiciones.add(new Plato("Pasta", 500));
         SaveFile1 save = new SaveFile1("pruebapedido.txt");
 
-        TarjetaCredito tarjeta = new TarjetaCredito("Visa");
+        TarjetaCredito tarjeta = new Visa();
         PedidoAPagar pedido = new PedidoAPagar(consumiciones, tarjeta,2 ,save);
 
         System.out.println("Calculando total para pedido con Visa...");

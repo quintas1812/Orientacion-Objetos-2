@@ -1,12 +1,7 @@
 package ejercicio2;
 
-public class TarjetaCredito {
-    private String nombre;
+public interface TarjetaCredito {
+    public double aplicarDescuentoBebida(double precio);
+    public double aplicarDescuentoPlato(double precio);
 
-    public String Nombre() {
-        return nombre;
-    }
-    public TarjetaCredito(String nombre) {
-        this.nombre = nombre;
-    }
 }
