@@ -15,24 +15,24 @@ public class Concurso {
         this.fechaFin = fechaFin;
         this.id = num++;
     }
-    public void agregarA(Participante participante, Save save) {
+    public void agregarA(Participante participante, Save save, Notificador notificador) {
         LocalDate hoy = LocalDate.now();
-        if (!hoy.isBefore(this.fechaInicio) && !hoy.isAfter(this.fechaFin)) {
-            participantes.add(participante);
-            participante.setFechaInscripcion(hoy);
-            if (hoy.equals(this.fechaInicio)) {
-                int puntos = participante.cantPuntos() + 10;
-                participante.cambiarPuntos(puntos);
-            }
-            StringBuilder sb = new StringBuilder();
-            sb.append(participante.fechaInscripcion()).append(", ").append(this.id).append(", ")
-                    .append(participante.Apellido()).append(" DNI: ")
-                    .append(participante.Dni()).append(System.lineSeparator());
-            String datos = sb.toString();
-            save.guardar(datos);
-        }else {
+        if (hoy.isBefore(this.fechaInicio) || hoy.isAfter(this.fechaFin)) {
             throw new RuntimeException("no se puede inscribir fuera de fechas");
         }
+        participantes.add(participante);
+        participante.setFechaInscripcion(hoy);
+        if (hoy.equals(this.fechaInicio)) {
+            int puntos = participante.cantPuntos() + 10;
+            participante.cambiarPuntos(puntos);
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(participante.fechaInscripcion()).append(", ").append(this.id).append(", ")
+                .append(participante.Apellido()).append(" DNI: ")
+                .append(participante.Dni()).append(System.lineSeparator());
+        String datos = sb.toString();
+        save.guardar(datos);
+        notificador.notificar(datos, participante.email());
     }
 
 

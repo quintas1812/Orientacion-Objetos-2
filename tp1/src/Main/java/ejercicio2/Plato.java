@@ -15,7 +15,7 @@ public class Plato extends ItemPedido {
     public double Precio() {
         return precio;
     }
-    public double descuentoCon(TarjetaCredito tarjeta) {
-        return tarjeta.aplicarDescuentoPlato(this.precio);
+    public double aplicarDescuento(TarjetaCredito tarjeta) {
+        return tarjeta.aplicarDescuentoPlato();
     }
 }

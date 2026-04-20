@@ -10,11 +10,14 @@ public class Participante {
     private String apellido;
     private LocalDate fechaInscripcion;
     private int puntos;
-    public Participante(int dni, String nombre, String apellido ) {
+    private String email;
+    public Participante(int dni, String nombre, String apellido, String email ) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.puntos =0;
+        this.email = email;
+
     }
     public LocalDate fechaInscripcion() {
         return fechaInscripcion;
@@ -36,5 +39,12 @@ public class Participante {
     }
     public void cambiarPuntos(int puntos) {
         this.puntos = puntos;
+    }
+    private void verificarEmail() {
+
+    }
+
+    public String email() {
+        return this.email;
     }
 }

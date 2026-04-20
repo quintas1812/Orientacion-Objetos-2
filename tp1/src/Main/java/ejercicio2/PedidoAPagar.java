@@ -23,7 +23,7 @@ public class PedidoAPagar {
         float descuentoTotal = 0;
         for (ItemPedido consumiciones : this.consumiciones) {
             costoTotal += consumiciones.Precio();
-            descuentoTotal += consumiciones.descuentoCon(this.tarjeta);
+            descuentoTotal +=  consumiciones.Precio() * consumiciones.aplicarDescuento(this.tarjeta);
         }
         float montoPropina = (float) (costoTotal * (this.porcentajeDePropina / 100.0));
         return  descuentoTotal + montoPropina;

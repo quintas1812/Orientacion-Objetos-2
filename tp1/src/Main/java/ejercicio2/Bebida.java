@@ -7,7 +7,7 @@ public class Bebida extends ItemPedido {
     }
 
     @Override
-    public double descuentoCon(TarjetaCredito tarjeta) {
-        return tarjeta.aplicarDescuentoBebida(this.precio);
+    public double aplicarDescuento(TarjetaCredito tarjeta) {
+        return tarjeta.aplicarDescuentoBebida();
     }
 }
